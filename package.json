@@ -1,17 +1,26 @@
 {
   "name": "now-dash",
   "version": "1.0.0",
-  "description": "",
+  "description": "Dashboard for your now deployments",
   "main": "index.js",
   "scripts": {
     "dev": "next",
     "build": "next build",
     "start": "next start"
   },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:mdaverde/now-dash.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mdaverde/now-dash/issues"
+  },
+  "homepage": "https://github.com/mdaverde/now-dash",
   "keywords": [],
-  "author": "Marlon L. <marlon@handsomeware.com> (http://mml.sexy)",
-  "license": "NA",
+  "author": "Marlon L. <milanlandaverde@gmail.com> (http://mdaverde.com)",
+  "license": "MIT",
   "dependencies": {
+    "isomorphic-fetch": "^2.2.1",
     "next": "^2.2.0",
     "now-client": "^0.7.0",
     "react": "^15.5.4",
