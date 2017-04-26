@@ -23,7 +23,7 @@ export default ({ children }) => (
   <div>
     <Head>
       <meta charSet="utf-8" />
-      <title>Now Dashboard</title>
+      <title>now dashboard</title>
       <style>{globalStyles}</style>
     </Head>
     {children}
