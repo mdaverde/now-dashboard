@@ -4,7 +4,7 @@ import _ from 'lodash';
 import Router from 'next/router';
 import Layout from '../components/Layout';
 import TokenInput from '../components/IndexPage/TokenInput';
-import SortedDeployments from '../components/IndexPage/SortedDeployments';
+import Deployments from '../components/IndexPage/Deployments';
 import Now from '../data/now';
 
 export default class extends Component {
@@ -61,7 +61,7 @@ export default class extends Component {
                 setToken={this.setToken}
               />
             ) : (
-              <SortedDeployments
+              <Deployments
                 deployments={deployments}
               />
           )
