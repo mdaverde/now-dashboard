@@ -1,9 +1,24 @@
+// @flow
 import React, { Component } from 'react';
 
 export default class extends Component {
-  constructor(props) {
+  handleOnSubmitBtnClick: () => void;
+  props: {
+    setToken: (tokenInputValue: string) => void
+  }
+  state: {
+    tokenInputValue: string
+  }
+  constructor(props: Object) {
     super(props);
+    this.handleOnSubmitBtnClick = this.handleOnSubmitBtnClick.bind(this);
     this.state = { tokenInputValue: '' };
+  }
+  handleOnSubmitBtnClick() {
+    const { tokenInputValue } = this.state;
+    if (tokenInputValue) {
+      this.props.setToken(tokenInputValue);
+    }
   }
   render() {
     const { tokenInputValue } = this.state;
@@ -68,7 +83,12 @@ export default class extends Component {
             onChange={(evt) => this.setState({ tokenInputValue: evt.target.value })}
           />
         </div>
-        <button className="seeDashBtn">Show me!</button>
+        <button
+          onClick={this.handleOnSubmitBtnClick}
+          className="seeDashBtn"
+        >
+          Show me!
+        </button>
       </div>
     )
   }

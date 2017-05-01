@@ -39,7 +39,7 @@ class Now {
     this._token = token;
     this._baseUrl = 'https://api.zeit.co';
   }
-  _generateURL(path) {
+  _generateUrl(path) {
     if (!path) {
       return this._baseUrl;
     }
@@ -53,7 +53,7 @@ class Now {
     if (json) {
       headers['Content-Type'] = 'application/json';
     }
-    return fetch(this._generateURL(path), {
+    return fetch(this._generateUrl(path), {
       headers, method,
       body: data && ((json && JSON.stringify(data)) || data)
     })
