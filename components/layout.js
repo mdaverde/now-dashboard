@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import AppContainer from './AppContainer';
 
 const globalStyles = `
   body {
@@ -26,6 +27,8 @@ export default ({ children }) => (
       <title>now dashboard</title>
       <style>{globalStyles}</style>
     </Head>
-    {children}
+    <AppContainer>
+      {children}
+    </AppContainer>
   </div>
 );

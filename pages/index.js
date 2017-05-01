@@ -54,18 +54,18 @@ export default class extends Component {
         `}</style>
         <div className="title">
           <span className="now-word">now</span> dashboard
-          {
-            !deployments ? (
-                <TokenInput
-                  setToken={this.setToken}
-                />
-              ) : (
-                <SortedDeployments
-                  deployments={deployments}
-                />
-            )
-          }
         </div>
+        {
+          !deployments ? (
+              <TokenInput
+                setToken={this.setToken}
+              />
+            ) : (
+              <SortedDeployments
+                deployments={deployments}
+              />
+          )
+        }
       </Layout>
     );
   }
