@@ -45,6 +45,7 @@ function generateChartData(dailyCounts) {
 function getRateOfDeploymentProps(deployments) {
   const dayFormat = 'M/DD/YY';
   const today = moment();
+  today.add(1, 'day');
   const dailyCounts = _(_.range(7))
     .map(() => {
       today.subtract(1, 'day');
