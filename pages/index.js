@@ -52,19 +52,32 @@ export default class extends Component {
     return (
       <Layout>
         <style jsx>{`
+          .header {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+            margin-bottom: 20px;
+          }
+          .logo {
+            display: block;
+            height: 70px;
+            line-height: 18px;
+          }
           .title {
             font-size: 2em;
             text-align: center;
-            margin-top: 50px;
-            margin-bottom: 20px;
+            margin-top: 15px;
           }
           .now-word {
             font-weight: 400;
             font-weight: normal;
           }
         `}</style>
-        <div className="title">
-          <span className="now-word">now</span> dashboard
+        <div className="header">
+          <img className="logo" src="/static/now-logo.png" />
+          <div className="title">
+            <span className="now-word">now</span> dashboard
+          </div>
         </div>
         {
           !deployments ? (
