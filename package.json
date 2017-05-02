@@ -2,7 +2,7 @@
   "name": "now-dash",
   "version": "1.0.0",
   "description": "Dashboard for your now deployments",
-  "main": "index.js",
+  "main": "pages/index.js",
   "scripts": {
     "dev": "next",
     "build": "next build",
