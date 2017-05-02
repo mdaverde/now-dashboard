@@ -1,8 +1,14 @@
 import moment from 'moment';
 import DeployState from './components/DeployState';
 
+function calendar(created) {
+  return moment(created, 'x').calendar(null, {
+    sameElse: 'MM/DD/YYYY h:mm a'
+  });
+}
+
 export default function({ deployment }) {
-  const { created, state, scale: { current, max }, url } = deployment
+  const { created, state, scale: { current, max }, url } = deployment;
   return (
     <div className="root">
       <style jsx>{`
@@ -42,7 +48,7 @@ export default function({ deployment }) {
       <div className="deploy-property url">
         <a href={`//${url}`}>{url}</a>
       </div>
-      <div className="deploy-property created">{(moment(created, 'x').calendar())}</div>
+      <div className="deploy-property created">{calendar(created)}</div>
       <div className="deploy-property scale">{current} / {max} instances</div>
       <div className="deploy-property state">
         <DeployState state={state} />
