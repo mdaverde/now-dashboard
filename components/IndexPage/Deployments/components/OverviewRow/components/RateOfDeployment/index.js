@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import _ from 'lodash';
+import moment from 'moment';
 import fontFamily from '../../../../../../../css/fontFamily';
 
 if (typeof window !== 'undefined') {
@@ -10,7 +11,7 @@ if (typeof window !== 'undefined') {
   });
 }
 
-function generateData(dailyCounts) {
+function generateChartData(dailyCounts) {
   return {
     labels: _.keys(dailyCounts),
     datasets: [
@@ -41,14 +42,35 @@ function generateData(dailyCounts) {
   };
 }
 
+function getRateOfDeploymentProps(deployments) {
+  const dayFormat = 'M/DD/YY';
+  const today = moment();
+  const dailyCounts = _(_.range(7))
+    .map(() => {
+      today.subtract(1, 'day');
+      return [today.format(dayFormat), 0];
+    })
+    .reverse()
+    .fromPairs()
+    .value();
+  const lastWeekDays = _.keys(dailyCounts);
+  _.forEach(deployments, ({ created }) => {
+    const dayOfDeployment = moment(created, 'x').format(dayFormat);
+    if (_.includes(lastWeekDays, dayOfDeployment)) {
+      dailyCounts[dayOfDeployment]++;
+    }
+  });
+  return { dailyCounts };
+}
 
 export default class extends Component {
   componentDidMount() {
     if (window) {
+      const { dailyCounts } = getRateOfDeploymentProps(this.props.deployments);
       const ctx = this.chart.getContext('2d');
       new Chart(ctx, {
+        data: generateChartData(dailyCounts),
         type: 'line',
-        data: generateData(this.props.dailyCounts),
         options: {
           title: {
             text: 'Rate of deployment',

@@ -1,4 +1,15 @@
-export default function({ instanceCount, instanceMax = 40 }) {
+import React from 'react';
+import _ from 'lodash';
+
+function getInstanceCountProps(deployments) {
+  return {
+    instanceCount: _.sum(_.map(deployments, _.property('scale.current'))),
+    instanceMax: _.sum(_.map(deployments, _.property('scale.max'))),
+  };
+}
+
+export default function({ deployments }) {
+  const { instanceCount, instanceMax } = getInstanceCountProps(deployments);
   return (
     <div className="root">
       <style jsx>{`

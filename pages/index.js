@@ -66,7 +66,8 @@ export default class extends Component {
           .title {
             font-size: 2em;
             text-align: center;
-            margin-top: 15px;
+            margin-top: 17px;
+            margin-left: -7px;
           }
           .now-word {
             font-weight: 400;
