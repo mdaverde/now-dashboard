@@ -7,9 +7,6 @@ if (typeof window !== 'undefined') {
   _.merge(Chart.defaults.global, {
     defaultFontFamily: fontFamily,
     defaultFontColor: '#fff',
-    title: {
-      fontStyle: 'light'
-    }
   });
 }
 
@@ -53,7 +50,12 @@ export default class extends Component {
         type: 'line',
         data: generateData(this.props.dailyCounts),
         options: {
-          title: { text: 'Rate of deployment', display: true },
+          title: {
+            text: 'Rate of deployment',
+            display: true,
+            fontStyle: 'normal',
+            fontSize: 14,
+          },
           legend: { display: false },
           scales: {
             yAxes: [{

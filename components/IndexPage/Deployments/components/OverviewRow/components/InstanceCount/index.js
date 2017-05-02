@@ -19,7 +19,7 @@ export default function({ instanceCount, instanceMax = 40 }) {
         <span>{instanceCount}</span>
         <span className="instance-max">/{instanceMax}</span>
       </div>
-      <div className="instance-text">instances</div>
+      <div className="instance-text">instances running</div>
     </div>
   );
 }
