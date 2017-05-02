@@ -1,5 +1,5 @@
 {
-  "name": "now-dash",
+  "name": "now-dashboard",
   "version": "1.0.0",
   "description": "Dashboard for your now deployments",
   "main": "pages/index.js",
