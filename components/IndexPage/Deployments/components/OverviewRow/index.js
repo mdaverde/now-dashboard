@@ -1,5 +1,6 @@
 import React from 'react';
 import InstanceCount from './components/InstanceCount';
+import ProjectCount from './components/ProjectCount';
 import RateOfDeployment from './components/RateOfDeployment';
 
 export default function({ deployments }) {
@@ -20,10 +21,10 @@ export default function({ deployments }) {
       `}</style>
       <div className="overview-row-x">
         <div className="box">
-          <RateOfDeployment deployments={deployments} />
+          <ProjectCount deployments={deployments} />
         </div>
         <div className="box">
-          <InstanceCount deployments={deployments} />
+          <RateOfDeployment deployments={deployments} />
         </div>
         <div className="box">
           <InstanceCount deployments={deployments} />
