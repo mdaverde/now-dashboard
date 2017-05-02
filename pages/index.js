@@ -9,8 +9,10 @@ import Now from '../data/now';
 
 export default class extends Component {
   setToken: (token: ?string) => void;
+  deleteDeployment: (uid: string) => Promise<void>;
   state: {
-    deployments: ?Object[]
+    deployments: ?Object[],
+    token: ?string,
   }
   props: {
     deployments: ?Object[]
@@ -18,10 +20,11 @@ export default class extends Component {
   constructor(props: Object) {
     super(props);
     this.setToken = this.setToken.bind(this);
-    this.state = { deployments: props.deployments };
+    this.deleteDeployment = this.deleteDeployment.bind(this);
+    this.state = { token: props.token, deployments: props.deployments };
   }
   static async getInitialProps({ query }) {
-    const initialProps =  { deployments: null };
+    const initialProps =  { token: query.token, deployments: null };
     if (query.token) {
       const deployments = await Now(query.token).getDeployments();
       initialProps.deployments = deployments;
@@ -34,8 +37,15 @@ export default class extends Component {
         query: { token }
       });
       const deployments = await Now(token).getDeployments();
-      this.setState({ deployments });
+      this.setState({ token, deployments });
     }
+  }
+  async deleteDeployment(uid: string) {
+    if (!uid) return;
+    if (!confirm(`Are you sure you want to delete deployment ${uid}?`)) return;
+    const { token } = this.state;
+    await Now(token).deleteDeployment(uid);
+    this.setState({ deployments: await Now(token).getDeployments() });
   }
   render() {
     const { deployments } = this.state;
@@ -64,6 +74,7 @@ export default class extends Component {
             ) : (
               <Deployments
                 deployments={deployments}
+                deleteDeployment={this.deleteDeployment}
               />
           )
         }

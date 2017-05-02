@@ -1,7 +1,7 @@
 import _ from 'lodash';
 import DeployItem from './components/DeployItem';
 
-export default function({ name, deployments }) {
+export default function({ name, deployments, deleteDeployment }) {
   return (
     <div className="root">
       <style jsx>{`
@@ -20,6 +20,7 @@ export default function({ name, deployments }) {
             <DeployItem
               key={deployment.uid}
               deployment={deployment}
+              deleteDeployment={deleteDeployment}
             />
           ))
         }

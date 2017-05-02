@@ -1,4 +1,3 @@
-// @flow
 import React from 'react';
 import _ from 'lodash';
 import DeploymentGroup from './components/DeploymentGroup';
@@ -10,7 +9,7 @@ function groupDeployments(deployments) {
   )
 }
 
-export default function ({ deployments }) {
+export default function ({ deployments, deleteDeployment }) {
   const groupedDeployments = groupDeployments(deployments);
   return (
     <div className="root">
@@ -29,6 +28,7 @@ export default function ({ deployments }) {
               key={name}
               name={name}
               deployments={deployments}
+              deleteDeployment={deleteDeployment}
             />
           ))
         }

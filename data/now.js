@@ -1,3 +1,4 @@
+// @flow
 import 'isomorphic-fetch';
 
 const ERROR = {
@@ -66,6 +67,13 @@ class Now {
       method: 'GET',
       json: true
     }, 'deployments')
+  }
+  deleteDeployment(uid: string) {
+    return this.handleRequest({
+      path: `/now/deployments/${uid}`,
+      method: 'DELETE',
+      json: true
+    });
   }
 }
 

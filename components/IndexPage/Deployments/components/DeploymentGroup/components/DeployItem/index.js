@@ -7,8 +7,8 @@ function calendar(created) {
   });
 }
 
-export default function({ deployment }) {
-  const { created, state, scale: { current, max }, url } = deployment;
+export default function({ deployment, deleteDeployment }) {
+  const { created, state, scale: { current, max }, uid, url } = deployment;
   return (
     <div className="root">
       <style jsx>{`
@@ -19,22 +19,21 @@ export default function({ deployment }) {
           margin-bottom: 8px;
         }
         .deploy-property {
-          width: 220px;
+          width: 100px;
           margin-right: 16px;
         }
+        .uid {
+          color: gray;
+          width: 220px;
+        }
         .url {
+          width: 220px;
           white-space: nowrap;
           overflow: hidden;
           text-overflow: ellipsis;
         }
         .created {
           width: 175px;
-        }
-        .scale {
-          width: 100px;
-        }
-        .state {
-          width: 150px;
         }
         a {
           color: white;
@@ -44,7 +43,12 @@ export default function({ deployment }) {
           color: #06b0d7;
           text-decoration: underline;
         }
+        .remove-link:hover {
+          cursor: pointer;
+          text-decoration: underline;
+        }
       `}</style>
+      <div className="deploy-property uid">{uid}</div>
       <div className="deploy-property url">
         <a href={`//${url}`}>{url}</a>
       </div>
@@ -52,6 +56,12 @@ export default function({ deployment }) {
       <div className="deploy-property scale">{current} / {max} instances</div>
       <div className="deploy-property state">
         <DeployState state={state} />
+      </div>
+      <div
+        className="deploy-property remove-link"
+        onClick={() => deleteDeployment(uid)}
+      >
+        delete
       </div>
     </div>
   );
