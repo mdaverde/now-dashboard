@@ -20,6 +20,7 @@
   "author": "Marlon L. <milanlandaverde@gmail.com> (http://mdaverde.com)",
   "license": "MIT",
   "dependencies": {
+    "chart.js": "^2.5.0",
     "isomorphic-fetch": "^2.2.1",
     "moment": "^2.18.1",
     "next": "^2.2.0",
