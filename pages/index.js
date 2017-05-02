@@ -1,6 +1,7 @@
 // @flow
 import React, { Component } from 'react';
 import _ from 'lodash';
+import NProgress from 'nprogress'
 import Router from 'next/router';
 import Layout from '../components/Layout';
 import TokenInput from '../components/IndexPage/TokenInput';
@@ -33,19 +34,23 @@ export default class extends Component {
   }
   async setToken(token: ?string) {
     if (token && !(token === _.get(this.props, 'url.query.token'))) {
+      NProgress.start();
       Router.push('/', {
         query: { token }
       });
       const deployments = await Now(token).getDeployments();
       this.setState({ token, deployments });
+      NProgress.done();
     }
   }
   async deleteDeployment(uid: string) {
     if (!uid) return;
     if (!confirm(`Are you sure you want to delete deployment ${uid}?`)) return;
+    NProgress.start();
     const { token } = this.state;
     await Now(token).deleteDeployment(uid);
     this.setState({ deployments: await Now(token).getDeployments() });
+    NProgress.done();
   }
   render() {
     const { deployments } = this.state;

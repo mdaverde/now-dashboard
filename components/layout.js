@@ -25,6 +25,7 @@ export default ({ children }) => (
     <Head>
       <meta charSet="utf-8" />
       <title>now dashboard</title>
+      <link rel='stylesheet' type='text/css' href='/static/nprogress.css' />
       <style>{globalStyles}</style>
     </Head>
     <AppContainer>
