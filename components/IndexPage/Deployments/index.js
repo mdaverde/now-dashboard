@@ -1,6 +1,7 @@
 import React from 'react';
 import _ from 'lodash';
 import DeploymentGroup from './components/DeploymentGroup';
+import OverviewRow from './components/OverviewRow';
 
 function groupDeployments(deployments) {
   return _.mapValues(
@@ -21,6 +22,9 @@ export default function ({ deployments, deleteDeployment }) {
         }
       `}</style>
       <h1>Deployments</h1>
+      <div className="overview-row">
+        <OverviewRow deployments={deployments} />
+      </div>
       <div>
         {
           _.map(groupedDeployments, (deployments, name) => (
