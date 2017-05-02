@@ -1,18 +1,33 @@
 // @flow
 import React, { Component } from 'react';
 import _ from 'lodash';
+import DeploymentGroup from './components/DeploymentGroup';
 
 export default class extends Component {
   render() {
-    console.log(this.props);
+    const { deployments } = this.props;
+    const groupedDeployments = _.groupBy(deployments, 'name');
     return (
       <div className="root">
         <style jsx>{`
-          .root {
-            font-family: 'Menlo'
+          h1 {
+            font-size: 28px;
+            font-weight: normal;
+            margin-bottom: 16px;
           }
         `}</style>
-        <div>Deployments</div>
+        <h1>Deployments</h1>
+        <div>
+          {
+            _.map(groupedDeployments, (deployments, name) => (
+              <DeploymentGroup
+                key={name}
+                name={name}
+                deployments={deployments}
+              />
+            ))
+          }
+        </div>
       </div>
     )
   }

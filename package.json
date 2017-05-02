@@ -21,6 +21,7 @@
   "license": "MIT",
   "dependencies": {
     "isomorphic-fetch": "^2.2.1",
+    "moment": "^2.18.1",
     "next": "^2.2.0",
     "now-client": "^0.7.0",
     "react": "^15.5.4",

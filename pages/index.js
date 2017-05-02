@@ -46,6 +46,7 @@ export default class extends Component {
             font-size: 2em;
             text-align: center;
             margin-top: 50px;
+            margin-bottom: 20px;
           }
           .now-word {
             font-weight: 400;
