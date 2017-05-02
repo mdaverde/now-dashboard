@@ -67,6 +67,7 @@ export default class extends Component {
             padding: 8px;
             cursor: pointer;
             transition: all 0.2s ease;
+            outline: none;
           }
           .seeDashBtn:hover {
             background-color: #FFF;
@@ -87,7 +88,7 @@ export default class extends Component {
           onClick={this.handleOnSubmitBtnClick}
           className="seeDashBtn"
         >
-          Show me!
+          Ready!
         </button>
       </div>
     )
