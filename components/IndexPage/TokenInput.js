@@ -166,6 +166,7 @@ export default class extends Component {
         </div>
         <a className="link source-link" href="//github.com/mdaverde/now-dashboard">source</a>
         <a className="link twitter-link" href="//twitter.com/mdaverde">built by @mdaverde</a>
+        <a className="link twitter-link" href="//now.sh">powered by now</a>
       </div>
     )
   }
