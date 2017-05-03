@@ -73,6 +73,24 @@ export default class extends Component {
             background-color: #FFF;
             color: #000;
           }
+          .link {
+            display: block;
+            font-family: Menlo;
+            text-align: center;
+            color: white;
+            margin-top: 30px;
+            font-size: 12px;
+            text-decoration: none;
+          }
+          .link:hover {
+            text-decoration: underline;
+          }
+          .source-link {
+            margin-top: 30px;
+          }
+          .twitter-link {
+            margin-top: 20px;
+          }
         `}</style>
         <div className="tokenInputParent">
           <div className="tokenInputLabel">ZEIT API TOKEN:</div>
@@ -90,6 +108,8 @@ export default class extends Component {
         >
           Ready!
         </button>
+        <a className="link source-link" href="//github.com/mdaverde/now-dashboard">source</a>
+        <a className="link twitter-link" href="//twitter.com/mdaverde">built by @mdaverde</a>
       </div>
     )
   }

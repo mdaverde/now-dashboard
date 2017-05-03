@@ -18,11 +18,11 @@ We attach your API token as a query param, so be wary of sharing links generated
 
 - [ ] Able to see aliases
 - [ ] Add copy to deployment url
-- [ ] Ability to scale instances from web UI
+- [ ] Ability to scale instances
 - [ ] Redeployment link
 - [ ] Mobile-friendly/Responsive
 - [ ] Polling & WS integration for live updates
-- [ ] Project specific metrics
+- [ ] Project-specific metrics
 - [ ] Error state handling
 
 ### Contributions welcome!
