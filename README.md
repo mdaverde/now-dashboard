@@ -1,6 +1,4 @@
-# Dashboard for your ▲ now deployments
-
-![Login](/static/header.png)
+![Dashboard for your ▲ now deployments](/static/header.png)
 
 ## Objective
 
@@ -28,3 +26,7 @@ We attach your API token as a query param, so be wary of sharing links generated
 - [ ] Error state handling
 
 ### Contributions welcome!
+
+## License
+
+MIT © [Marlon](http://mdaverde.com)
