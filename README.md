@@ -4,7 +4,7 @@
 
 Originally this was intended to be a quick read-only web interface to seeing current deployments and projects being hosted on [now.sh](http://now.sh) but with more projects came a need to be in the same UI to make changes instead of switching to the command line.
 
-![Login](/static/sample-metrics.png)
+![Login](/static/screenshot.png)
 
 ## Warning
 
