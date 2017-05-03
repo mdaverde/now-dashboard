@@ -25,6 +25,7 @@ export default ({ children }) => (
     <Head>
       <meta charSet="utf-8" />
       <title>now dashboard</title>
+      <meta name="description" content="Dashboard for all of your △ now deploys" />
       <link rel='stylesheet' type='text/css' href='/static/nprogress.css' />
       <style>{globalStyles}</style>
     </Head>
