@@ -157,7 +157,7 @@ export default class extends Component {
           <ul className="features-list">
             <li>See all project details and instances in one place</li>
             <li>Visualize current rate of deployment <span className="feature-coming-soon">(more metrics coming soon!)</span></li>
-            <li>Manage deployments easily <span className="feature-coming-soon">(scaling coming soon!)</span></li>
+            <li>Delete past deployments easily <span className="feature-coming-soon">(more control coming soon!)</span></li>
           </ul>
         </div>
         <div className="screenshot-title">Screenshot</div>
