@@ -26,7 +26,7 @@ export default class extends Component {
       <div className="root">
         <style jsx>{`
           .root {
-            margin-top: 30px;
+            margin: 30px 0;
           }
           .tokenInputParent {
             border-bottom: 2px solid #FFF;
@@ -73,6 +73,50 @@ export default class extends Component {
             background-color: #FFF;
             color: #000;
           }
+          .features {
+            width: 700px;
+            margin: 100px auto;
+            font-family: Menlo;
+            font-size: 13px;
+          }
+          .features-title {
+            text-align: center;
+          }
+          .features-list {
+            width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+          }
+          .features-list li {
+            margin: 20px;
+          }
+          .feature-coming-soon {
+            color: gray;
+          }
+          .screenshot-title {
+            width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            font-family: Menlo;
+            margin-top: 30px;
+          }
+          .screenshot-parent {
+            position: relative;
+            margin-top: 10px;
+            margin-left: auto;
+            margin-right: auto;
+            overflow: hidden;
+            height: 350px;
+            border: 2px solid #FFF;
+            width: 700px;
+          }
+          .screenshot {
+            display: block;
+            position: absolute;
+            top: -50px;
+            left: 0;
+            width: 100%;
+          }
           .link {
             display: block;
             font-family: Menlo;
@@ -108,6 +152,18 @@ export default class extends Component {
         >
           Ready!
         </button>
+        <div className="features">
+          <div className="features-title">Features</div>
+          <ul className="features-list">
+            <li>See all project details and instances in one place</li>
+            <li>Visualize current rate of deployment <span className="feature-coming-soon">(more metrics coming soon!)</span></li>
+            <li>Manage deployments easily <span className="feature-coming-soon">(scaling coming soon!)</span></li>
+          </ul>
+        </div>
+        <div className="screenshot-title">Screenshot</div>
+        <div className="screenshot-parent">
+          <img className="screenshot" src="/static/screenshot.png" />
+        </div>
         <a className="link source-link" href="//github.com/mdaverde/now-dashboard">source</a>
         <a className="link twitter-link" href="//twitter.com/mdaverde">built by @mdaverde</a>
       </div>
