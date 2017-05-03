@@ -10,12 +10,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:mdaverde/now-dash.git"
+    "url": "git@github.com:mdaverde/now-dashboard.git"
   },
   "bugs": {
-    "url": "https://github.com/mdaverde/now-dash/issues"
+    "url": "https://github.com/mdaverde/now-dashboard/issues"
   },
-  "homepage": "https://github.com/mdaverde/now-dash",
+  "homepage": "https://github.com/mdaverde/now-dashboard",
   "keywords": [],
   "author": "Marlon L. <milanlandaverde@gmail.com> (http://mdaverde.com)",
   "license": "MIT",
