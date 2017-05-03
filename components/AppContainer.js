@@ -4,7 +4,7 @@ export default function({ children }) {
     <div className="root">
       <style jsx>{`
         .root {
-          width: 1000px;
+          max-width: 1000px;
           margin-left: auto;
           margin-right: auto;
         }
