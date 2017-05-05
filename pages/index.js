@@ -6,6 +6,7 @@ import Router from 'next/router';
 import Layout from '../components/Layout';
 import TokenInput from '../components/IndexPage/TokenInput';
 import Deployments from '../components/IndexPage/Deployments';
+import getDeployments from '../data/getDeployments';
 import Now from '../data/now';
 
 export default class extends Component {
@@ -14,10 +15,10 @@ export default class extends Component {
   state: {
     deployments: ?Object[],
     token: ?string,
-  }
+  };
   props: {
     deployments: ?Object[]
-  }
+  };
   constructor(props: Object) {
     super(props);
     this.setToken = this.setToken.bind(this);
@@ -27,7 +28,7 @@ export default class extends Component {
   static async getInitialProps({ query }) {
     const initialProps =  { token: query.token, deployments: null };
     if (query.token) {
-      const deployments = await Now(query.token).getDeployments();
+      const deployments = await getDeployments(query.token);
       initialProps.deployments = deployments;
     }
     return initialProps;
@@ -38,7 +39,7 @@ export default class extends Component {
       Router.push('/', {
         query: { token }
       });
-      const deployments = await Now(token).getDeployments();
+      const deployments = await getDeployments(token);
       this.setState({ token, deployments });
       NProgress.done();
     }
@@ -49,7 +50,7 @@ export default class extends Component {
     NProgress.start();
     const { token } = this.state;
     await Now(token).deleteDeployment(uid);
-    this.setState({ deployments: await Now(token).getDeployments() });
+    this.setState({ deployments: await getDeployments(token) });
     NProgress.done();
   }
   render() {
