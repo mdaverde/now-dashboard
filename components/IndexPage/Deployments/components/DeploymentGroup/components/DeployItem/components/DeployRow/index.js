@@ -28,6 +28,7 @@ export default function ({ deployment, deleteDeployment }) {
         text-overflow: ellipsis;
       }
       .uid {
+        flex: 1 1 auto;
         color: gray;
         max-width: 220px;
       }
@@ -36,14 +37,12 @@ export default function ({ deployment, deleteDeployment }) {
       }
       .link {
         display: block;
-        text-align: center;
       }
       .aliases {
         margin-top: 4px;
       }
       .alias {
         display: block;
-        text-align: center;
         color: #9575cd;
       }
       .created {
