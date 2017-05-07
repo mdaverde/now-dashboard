@@ -6,7 +6,7 @@ export default function({ name, deployments, deleteDeployment }) {
     <div className="root">
       <style jsx>{`
         .root {
-          margin-bottom: 32px;
+          margin-bottom: 24px;
         }
         .name {
           font-size: 21px;

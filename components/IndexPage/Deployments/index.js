@@ -5,7 +5,7 @@ import OverviewRow from './components/OverviewRow';
 
 function groupDeployments(deployments) {
   return _.mapValues(
-    _.groupBy(deployments, 'name'),
+    _(deployments).sortBy('name').groupBy('name').value(),
     (group) => _(group).sortBy('created').reverse().value()
   )
 }
