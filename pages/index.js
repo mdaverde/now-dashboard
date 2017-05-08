@@ -55,11 +55,11 @@ export default class extends Component {
     NProgress.done();
   }
   logOut() {
-    this.setState({ loggedIn: false, deployments: null });
+    this.setState({ token: null, loggedIn: false, deployments: null });
     cookies.remove('token');
   }
   render() {
-    const { deployments, loggedIn } = this.state;
+    const { token, deployments, loggedIn } = this.state;
     return (
       <Layout>
         <style jsx>{`
@@ -90,14 +90,20 @@ export default class extends Component {
             font-weight: 400;
             font-weight: normal;
           }
-          .log-out {
+          .log-out, .current-token {
             color: white;
             font-size: 12px;
             text-align: center;
+          }
+          .log-out {
             cursor: pointer;
           }
           .log-out:hover {
             text-decoration: underline;
+          }
+          .current-token {
+            margin-top: 4px;
+            color: gray;
           }
         `}</style>
         <div className="header">
@@ -109,11 +115,14 @@ export default class extends Component {
           </div>
           {
             loggedIn && (
-              <div
-                className="log-out"
-                onClick={this.logOut}
-              >
-                log out
+              <div className="login-data">
+                <div
+                  className="log-out"
+                  onClick={this.logOut}
+                >
+                  log out
+                </div>
+                <div className="current-token">Token: {token}</div>
               </div>
             )
           }
