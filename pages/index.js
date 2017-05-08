@@ -1,8 +1,9 @@
 // @flow
 import React, { Component } from 'react';
 import _ from 'lodash';
-import NProgress from 'nprogress'
-import Router from 'next/router';
+import NProgress from 'nprogress';
+import cookies from 'js-cookie';
+import nextCookies from 'next-cookies';
 import Layout from '../components/Layout';
 import TokenInput from '../components/IndexPage/TokenInput';
 import Deployments from '../components/IndexPage/Deployments';
@@ -23,24 +24,24 @@ export default class extends Component {
     super(props);
     this.setToken = this.setToken.bind(this);
     this.deleteDeployment = this.deleteDeployment.bind(this);
-    this.state = { token: props.token, deployments: props.deployments };
+    this.logOut = this.logOut.bind(this);
+    this.state = _.pick(props, ['token', 'deployments', 'loggedIn']);
   }
-  static async getInitialProps({ query }) {
-    const initialProps =  { token: query.token, deployments: null };
-    if (query.token) {
-      const deployments = await getDeployments(query.token);
-      initialProps.deployments = deployments;
+  static async getInitialProps(params) {
+    const { token } = nextCookies(params);
+    const initialProps =  { token, deployments: null, loggedIn: false };
+    if (token) {
+      initialProps.deployments = await getDeployments(token);
+      initialProps.loggedIn = true;
     }
     return initialProps;
   }
   async setToken(token: ?string) {
     if (token && !(token === _.get(this.props, 'url.query.token'))) {
       NProgress.start();
-      Router.push('/', {
-        query: { token }
-      });
       const deployments = await getDeployments(token);
-      this.setState({ token, deployments });
+      this.setState({ token, deployments, loggedIn: true });
+      cookies.set('token', token);
       NProgress.done();
     }
   }
@@ -53,23 +54,33 @@ export default class extends Component {
     this.setState({ deployments: await getDeployments(token) });
     NProgress.done();
   }
+  logOut() {
+    this.setState({ loggedIn: false, deployments: null });
+    cookies.remove('token');
+  }
   render() {
-    const { deployments } = this.state;
+    const { deployments, loggedIn } = this.state;
     return (
       <Layout>
         <style jsx>{`
           .header {
+            position: relative;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             margin-top: 20px;
             margin-bottom: 20px;
+          }
+          .title {
+            display: flex;
+            justify-content: center;
           }
           .logo {
             display: block;
             height: 70px;
             line-height: 18px;
           }
-          .title {
+          .now-text {
             font-size: 2em;
             text-align: center;
             margin-top: 17px;
@@ -79,12 +90,33 @@ export default class extends Component {
             font-weight: 400;
             font-weight: normal;
           }
+          .log-out {
+            color: white;
+            font-size: 12px;
+            text-align: center;
+            cursor: pointer;
+          }
+          .log-out:hover {
+            text-decoration: underline;
+          }
         `}</style>
         <div className="header">
-          <img className="logo" src="/static/now-logo.png" />
           <div className="title">
-            <span className="now-word">now</span> dashboard
+            <img className="logo" src="/static/now-logo.png" />
+            <div className="now-text">
+              <span className="now-word">now</span> dashboard
+            </div>
           </div>
+          {
+            loggedIn && (
+              <div
+                className="log-out"
+                onClick={this.logOut}
+              >
+                log out
+              </div>
+            )
+          }
         </div>
         {
           !deployments ? (

@@ -23,8 +23,10 @@
   "dependencies": {
     "axios": "^0.16.1",
     "chart.js": "^2.5.0",
+    "js-cookie": "^2.1.4",
     "moment": "^2.18.1",
     "next": "^2.2.0",
+    "next-cookies": "^1.0.1",
     "now-client-isomorphic": "0.0.3",
     "nprogress": "^0.2.0",
     "promise-polyfill": "^6.0.2",
